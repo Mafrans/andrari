@@ -12,7 +12,7 @@ export async function apiQuery<T>(
   query: NestedRecord<unknown> = {},
   options?: RequestInit
 ) {
-  const url = new URL(route, process.env.API_URL);
+  const url = new URL(route, process.env.NEXT_PUBLIC_API_URL);
   url.search = stringify(query);
 
   const response = await fetch(url.href, options);
