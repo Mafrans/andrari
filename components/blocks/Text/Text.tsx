@@ -1,8 +1,8 @@
-import ReactMarkdown from "react-markdown";
 import { Component } from "../../../types/components";
 import { TextProps } from "./types";
 import styles from "./styles.module.css";
+import { Markdown } from "../../Markdown/Markdown";
 
 export const Text: Component<TextProps> = ({ Content }) => {
-  return <ReactMarkdown className={styles.text}>{Content}</ReactMarkdown>;
+  return <Markdown className={styles.text}>{Content}</Markdown>;
 };
