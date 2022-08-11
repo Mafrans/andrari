@@ -18,4 +18,10 @@ declare namespace Strapi {
   }>;
 
   export type Collection<T> = Single<T>[];
+
+  export type Component<T> = Snowflake<
+    {
+      __component: string;
+    } & T
+  >;
 }
