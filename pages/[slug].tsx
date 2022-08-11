@@ -1,14 +1,20 @@
 import type {
   GetStaticPaths,
   GetStaticProps,
+  GetStaticPropsContext,
+  GetStaticPropsResult,
   InferGetStaticPropsType,
   NextPage,
 } from "next";
 import Head from "next/head";
+import { Block } from "../components/blocks";
 import { getCollection, getSingle } from "../utils/strapi";
 
-const Page: NextPage<InferGetStaticPropsType<GetStaticProps>> = (context) => {
-  console.log(context);
+const Page: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
+  page,
+}) => {
+  const { Blocks } = page.attributes;
+
   return (
     <div>
       <Head>
@@ -17,12 +23,16 @@ const Page: NextPage<InferGetStaticPropsType<GetStaticProps>> = (context) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main></main>
+      <main>
+        {Blocks.map((block) => (
+          <Block key={block.id} {...block} />
+        ))}
+      </main>
     </div>
   );
 };
 
-export const getStaticProps: GetStaticProps = async ({ params }) => {
+export const getStaticProps = async ({ params }: GetStaticPropsContext) => {
   const {
     data: [page],
   } = await getCollection<Collections.Post>("pages", {
@@ -41,7 +51,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   };
 };
 
-export const getStaticPaths: GetStaticPaths = async () => {
+export const getStaticPaths = async () => {
   const { data: pages } = await getCollection<Collections.Post>("pages");
 
   return {

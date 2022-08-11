@@ -15,6 +15,7 @@ export async function apiQuery<T>(
   const url = new URL(route, process.env.NEXT_PUBLIC_API_URL);
   url.search = stringify(query);
 
+  console.log(url.href);
   const response = await fetch(url.href, options);
   if (!response.ok) {
     throw new Error(`${response.status} ${response.statusText}`);
