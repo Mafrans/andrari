@@ -1,0 +1,21 @@
+.text h1 {
+  @apply text-4xl mb-4 mt-8;
+}
+
+.text h2 {
+  @apply text-2xl mb-4 mt-4;
+}
+
+.text h3 {
+  @apply text-xl mb-2 mt-2;
+}
+
+.text h4,
+.text h5,
+.text h6 {
+  @apply text-lg;
+}
+
+.text p {
+  @apply mb-4;
+}
