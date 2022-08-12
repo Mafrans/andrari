@@ -1,6 +1,7 @@
 declare namespace Collections {
   type Post = {
     Title: string;
+    Layout: string;
     Slug: string;
     Excerpt: string;
     Blocks: Strapi.Component<unknown>[];

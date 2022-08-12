@@ -1,34 +1,34 @@
 import type {
-  GetStaticPaths,
-  GetStaticProps,
   GetStaticPropsContext,
-  GetStaticPropsResult,
   InferGetStaticPropsType,
   NextPage,
 } from "next";
 import Head from "next/head";
-import { Block } from "../components/blocks";
-import { getCollection, getSingle } from "../utils/strapi";
+import { Block } from "../components/blocks/Block";
+import { Layout } from "../layouts/Layout";
+import { getCollection } from "../utils/strapi";
 
 const Page: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
-  page,
+  page = null,
 }) => {
-  const { Blocks } = page.attributes;
+  if (!page) {
+    return null;
+  }
+
+  const { Blocks, Layout: layout } = page.attributes;
 
   return (
-    <div>
+    <Layout type={layout}>
       <Head>
         <title></title>
         <meta name="description" content="" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main>
-        {Blocks.map((block) => (
-          <Block key={block.id} {...block} />
-        ))}
-      </main>
-    </div>
+      {Blocks?.map((block) => (
+        <Block key={block.id} {...block} />
+      ))}
+    </Layout>
   );
 };
 

@@ -1,7 +1,8 @@
 import { Sidebar } from "../../components/Sidebar/Sidebar";
 import { Component } from "../../types/components";
+import { LayoutProps } from "../types";
 
-export const DocsLayout: Component<{}> = () => {
+export const DocumentationLayout: Component<LayoutProps> = ({ children }) => {
   return (
     <div className="min-h-screen grid grid-cols-[max-content_1fr]">
       <Sidebar
@@ -12,6 +13,8 @@ export const DocsLayout: Component<{}> = () => {
           { href: "/", title: "Test" },
         ]}
       />
+
+      <main>{children}</main>
     </div>
   );
 };
