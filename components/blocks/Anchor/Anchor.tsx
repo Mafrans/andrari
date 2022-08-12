@@ -1,7 +1,9 @@
 import clsx from "clsx";
-import { ElementType } from "react";
+import dynamic from "next/dynamic";
+import { ComponentType, ElementType } from "react";
+import { IconType } from "react-icons";
 import { Component } from "../../../types/components";
-import * as icons from "react-icons/cg";
+import { LazyIcon } from "../../LazyIcon/LazyIcon";
 
 export const Anchor: Component<Blocks.Anchor> = ({
   Title,
@@ -10,19 +12,18 @@ export const Anchor: Component<Blocks.Anchor> = ({
   Icon,
 }) => {
   const Host = `h${Level}` as ElementType;
-  const IconElement = icons[Icon as keyof typeof icons];
 
   return (
     <Host
       className={clsx(
-        "font-medium",
+        "font-medium flex items-center gap-2",
         Level === 1 && "text-2xl",
         Level === 2 && "text-xl",
         Level >= 3 && "text-lg"
       )}
       id={Slug}
     >
-      {Icon ? <IconElement /> : null}
+      {Icon ? <LazyIcon icon={Icon} /> : null}
       {Title}
     </Host>
   );
