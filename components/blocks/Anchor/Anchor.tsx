@@ -17,9 +17,10 @@ export const Anchor: Component<Blocks.Anchor> = ({
     <Host
       className={clsx(
         "font-medium flex items-center gap-2",
-        Level === 1 && "text-2xl",
-        Level === 2 && "text-xl",
-        Level >= 3 && "text-lg"
+        Level === 1 && "text-3xl",
+        Level === 2 && "text-2xl",
+        Level === 3 && "text-xl",
+        Level >= 4 && "text-lg"
       )}
       id={Slug}
     >
