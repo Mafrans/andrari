@@ -18,7 +18,7 @@ const Page: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
   const { Blocks, Layout: layout } = page.attributes;
 
   return (
-    <Layout type={layout}>
+    <Layout type={layout} page={page}>
       <Head>
         <title></title>
         <meta name="description" content="" />

@@ -17,7 +17,7 @@ export const Sidebar: Component<SidebarProps> = ({
       )}
     >
       <Link href="/">
-        <a className="p-6 flex">{title}</a>
+        <a className="flex p-6">{title}</a>
       </Link>
 
       <div className="p-4 space-y-1">
